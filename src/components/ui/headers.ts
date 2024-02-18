@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 interface StyledButtonProps {
   theme: Theme;
+  color: 'primary' | 'secondary' | 'tertiary';
+  opacity?: string;
 }
 
 export const H1 = styled.h1<StyledButtonProps>`
@@ -10,7 +12,8 @@ export const H1 = styled.h1<StyledButtonProps>`
   line-height: 5.8rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const H2 = styled.h2<StyledButtonProps>`
@@ -18,7 +21,8 @@ export const H2 = styled.h2<StyledButtonProps>`
   line-height: 4.4rem;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const SubTitle = styled.h2<StyledButtonProps>`
@@ -26,7 +30,8 @@ export const SubTitle = styled.h2<StyledButtonProps>`
   line-height: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  color: ${(props) => props.theme.color.text.secondary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 // TODO set rem to 10 px
@@ -35,7 +40,8 @@ export const H3 = styled.h3<StyledButtonProps>`
   line-height: 3.6rem;
   text-transform: uppercase;
   letter-spacing: 0.115rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const H4 = styled.h4<StyledButtonProps>`
@@ -43,7 +49,8 @@ export const H4 = styled.h4<StyledButtonProps>`
   line-height: 3.8rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const H5 = styled.h5<StyledButtonProps>`
@@ -51,7 +58,8 @@ export const H5 = styled.h5<StyledButtonProps>`
   line-height: 3.3rem;
   text-transform: uppercase;
   letter-spacing: 0.17rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const H6 = styled.h6<StyledButtonProps>`
@@ -59,7 +67,8 @@ export const H6 = styled.h6<StyledButtonProps>`
   line-height: 2.4rem;
   text-transform: uppercase;
   letter-spacing: 0.13rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const Overline = styled.span<StyledButtonProps>`
@@ -67,13 +76,13 @@ export const Overline = styled.span<StyledButtonProps>`
   line-height: 1.9rem;
   text-transform: uppercase;
   letter-spacing: 1rem;
-  color: ${(props) => props.theme.color.text.secondary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
 
 export const Body = styled.p<StyledButtonProps>`
   font-size: 1.5rem;
   line-height: 2.5rem;
-  color: ${(props) => props.theme.color.text.primary};
+  color: ${(props) => props.theme.color.text[props.color]};
+  opacity: ${({ opacity }) => opacity};
 `;
-
-// TODO change rem to 10px , add font family

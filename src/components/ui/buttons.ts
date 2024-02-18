@@ -12,9 +12,10 @@ const BaseButton = styled.button`
   padding: 1.5rem 3rem;
   cursor: pointer;
   border: none;
+  width: 18rem;
 `;
 
-export const Button_Primary = styled(BaseButton)<StyledButtonProps>`
+export const ButtonPrimary = styled(BaseButton)<StyledButtonProps>`
   color: ${(props) => props.theme.color.text.tertiary};
   background-color: ${(props) => props.theme.color.brand.tertiary};
 
@@ -23,7 +24,7 @@ export const Button_Primary = styled(BaseButton)<StyledButtonProps>`
   }
 `;
 
-export const Button_Secondary = styled(BaseButton)<StyledButtonProps>`
+export const ButtonSecondary = styled(BaseButton)<StyledButtonProps>`
   border: 2px solid ${(props) => props.theme.color.brand.secondary};
   color: ${(props) => props.theme.color.text.primary};
   background-color: ${(props) => props.theme.color.brand.primary};

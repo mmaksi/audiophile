@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import color, { ColorScheme } from './color';
+import padding, { PaddingScheme } from './padding';
 import { ThemeProvider } from 'styled-components';
 
 interface Props {
@@ -8,10 +9,12 @@ interface Props {
 
 const theme = {
   color,
+  padding,
 };
 
 export interface Theme {
   color: ColorScheme;
+  padding: PaddingScheme;
 }
 
 const ThemeWrapper = ({ children }: Props) => {
