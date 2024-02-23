@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requestValidator } from '../middleware/request-validator.middleware';
+import { httpSignin } from '../controllers/user.controller';
 
 const signinRouter = express.Router();
 
@@ -14,9 +15,7 @@ signinRouter.get(
       .withMessage('You must provide a password'),
   ],
   requestValidator,
-  (req: Request, res: Response) => {
-    res.send('Signin');
-  }
+  httpSignin
 );
 
 export default signinRouter;

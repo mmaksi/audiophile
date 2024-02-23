@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/mmaksi/audiophile#readme",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^2.4.3",
     "cookie-session": "^2.1.0",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",

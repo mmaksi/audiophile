@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express';
+import { httpSignout } from '../controllers/user.controller';
 
 const signoutRouter = express.Router();
 
-signoutRouter.get('/signout', (req: Request, res: Response) => {
-  res.send('Signout');
-});
+signoutRouter.post('/signout', httpSignout);
 
 export default signoutRouter;
