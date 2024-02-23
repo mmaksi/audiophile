@@ -5,7 +5,7 @@ import { httpSignup } from '../controllers/user.controller';
 
 const signupRouter = express.Router();
 
-signupRouter.get(
+signupRouter.post(
   '/signup',
   [
     body('email').isEmail().withMessage('Email must be valid'),

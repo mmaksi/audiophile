@@ -5,7 +5,7 @@ import { httpSignin } from '../controllers/user.controller';
 
 const signinRouter = express.Router();
 
-signinRouter.get(
+signinRouter.post(
   '/signin',
   [
     body('email').isEmail().withMessage('Email must be valid'),

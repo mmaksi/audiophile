@@ -5,9 +5,18 @@ import signinRouter from './routers/signin.router';
 import signoutRouter from './routers/signout.router';
 import errorsHandler from './middleware/errorsHandler.middleware';
 import { ErrorNotFound } from './errors/not-found.error';
+import cookieSession from 'cookie-session';
 
 const app = express();
+app.set('trust proxy', true);
 app.use(express.json());
+
+app.use(
+  cookieSession({
+    signed: false,
+    secure: false,
+  })
+);
 
 // Routers
 app.use('/api/users', signupRouter);

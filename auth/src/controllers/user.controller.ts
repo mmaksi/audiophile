@@ -4,6 +4,7 @@ import { RequestValidationError } from '../errors/request-validation.error';
 import { findUser, saveUser } from '../models/users/user.model';
 import { BadRequestError } from '../errors/bad-request.error';
 import { Password } from '../services/password';
+import jwt from 'jsonwebtoken';
 
 export async function httpSignup(req: Request, res: Response) {
   const errors = validationResult(req);
@@ -23,10 +24,16 @@ export async function httpSignup(req: Request, res: Response) {
   const hashedPassword = await Password.toHash(password);
 
   //   Save user
-  await saveUser(email, hashedPassword);
-  return res.status(201).json({ email, hashedPassword });
+  const user = await saveUser(email, hashedPassword);
+
+  //   Generate a JWT
+  const userJwt = jwt.sign({ id: user.id, email }, 'secret');
+  req.session = {
+    jwt: userJwt,
+  };
 
   //   Return a cookie
+  return res.status(201).json({ email, hashedPassword });
 }
 
 export function httpSignin(req: Request, res: Response) {
