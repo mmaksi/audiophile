@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
-import { RequestValidationError } from '../errors/request-validation.error';
 import { findUser, saveUser } from '../models/users/user.model';
 import { BadRequestError } from '../errors/bad-request.error';
 import { Password } from '../services/password';
 import jwt from 'jsonwebtoken';
+
+export function httpGetCurrentUser(req: Request, res: Response) {
+  return res.json({ currentUser: req.currentUser || null });
+}
 
 export async function httpSignup(req: Request, res: Response) {
   //   Check if user exists
@@ -56,5 +58,6 @@ export async function httpSignin(req: Request, res: Response) {
 }
 
 export function httpSignout(req: Request, res: Response) {
-  return res.send('Signout');
+  req.session = null;
+  return res.json({});
 }

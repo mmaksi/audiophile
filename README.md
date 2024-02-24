@@ -11,6 +11,10 @@ Microservices architecture using Express.js
 2. `npm install`
 3. `npm run dev`
 
+## Start backend microservices:
+1. `cd auth`
+2. `npm run start`
+
 # Documentation
 
 ## Auth Service
