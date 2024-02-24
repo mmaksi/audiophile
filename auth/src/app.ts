@@ -1,11 +1,9 @@
 import express from 'express';
 import 'express-async-errors';
-import signupRouter from './routers/signup.router';
-import signinRouter from './routers/signin.router';
-import signoutRouter from './routers/signout.router';
 import errorsHandler from './middleware/errors-handler.middleware';
 import { ErrorNotFound } from './errors/not-found.error';
 import cookieSession from 'cookie-session';
+import userRouter from './routers/user.router';
 
 const app = express();
 app.set('trust proxy', true);
@@ -19,9 +17,7 @@ app.use(
 );
 
 // Routers
-app.use('/api/users', signupRouter);
-app.use('/api/users', signinRouter);
-app.use('/api/users', signoutRouter);
+app.use('/api/users', userRouter);
 
 app.all('*', async () => {
   throw new ErrorNotFound();
