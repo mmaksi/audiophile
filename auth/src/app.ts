@@ -3,7 +3,7 @@ import 'express-async-errors';
 import signupRouter from './routers/signup.router';
 import signinRouter from './routers/signin.router';
 import signoutRouter from './routers/signout.router';
-import errorsHandler from './middleware/errorsHandler.middleware';
+import errorsHandler from './middleware/errors-handler.middleware';
 import { ErrorNotFound } from './errors/not-found.error';
 import cookieSession from 'cookie-session';
 

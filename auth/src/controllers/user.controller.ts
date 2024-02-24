@@ -7,12 +7,6 @@ import { Password } from '../services/password';
 import jwt from 'jsonwebtoken';
 
 export async function httpSignup(req: Request, res: Response) {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    throw new RequestValidationError(errors.array());
-  }
-
   //   Check if user exists
   const { email, password } = req.body;
   const existingUser = await findUser(email);
@@ -28,25 +22,36 @@ export async function httpSignup(req: Request, res: Response) {
 
   //   Generate a JWT
   const userJwt = jwt.sign({ id: user.id, email }, process.env.JWT_KEY!);
+
+  //   Return a cookie
   req.session = {
     jwt: userJwt,
   };
-
-  //   Return a cookie
-  return res.status(201).json({ email, hashedPassword });
+  return res.status(201).json(user);
 }
 
 export async function httpSignin(req: Request, res: Response) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    throw new RequestValidationError(errors.array());
-  }
-
   //   Check if user exists
   const { email, password } = req.body;
   const existingUser = await findUser(email);
-  if (existingUser) {
-    throw new BadRequestError('Email in use');
+  if (!existingUser) {
+    throw new BadRequestError('Invalid credentials');
+  }
+
+  const passwordMatch = await Password.compare(existingUser.password, password);
+  if (!passwordMatch) {
+    throw new BadRequestError('Invalid credentials');
+  } else {
+    //   Generate a JWT
+    const userJwt = jwt.sign(
+      { id: existingUser.id, email: existingUser.email },
+      process.env.JWT_KEY!
+    );
+    //   Return a cookie
+    req.session = {
+      jwt: userJwt,
+    };
+    return res.status(200).json(existingUser);
   }
 }
 
