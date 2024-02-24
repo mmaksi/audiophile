@@ -27,7 +27,7 @@ export async function httpSignup(req: Request, res: Response) {
   const user = await saveUser(email, hashedPassword);
 
   //   Generate a JWT
-  const userJwt = jwt.sign({ id: user.id, email }, 'secret');
+  const userJwt = jwt.sign({ id: user.id, email }, process.env.JWT_KEY!);
   req.session = {
     jwt: userJwt,
   };
@@ -36,8 +36,18 @@ export async function httpSignup(req: Request, res: Response) {
   return res.status(201).json({ email, hashedPassword });
 }
 
-export function httpSignin(req: Request, res: Response) {
-  return res.send('Signout');
+export async function httpSignin(req: Request, res: Response) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new RequestValidationError(errors.array());
+  }
+
+  //   Check if user exists
+  const { email, password } = req.body;
+  const existingUser = await findUser(email);
+  if (existingUser) {
+    throw new BadRequestError('Email in use');
+  }
 }
 
 export function httpSignout(req: Request, res: Response) {
