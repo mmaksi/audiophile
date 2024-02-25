@@ -12,8 +12,15 @@ Microservices architecture using Express.js
 3. `npm run dev`
 
 ## Start backend microservices:
-1. `cd auth`
-2. `npm run start`
+### Requirements:
+- Make sure Docker and Kubernetes are running on your system.
+- Install Skaffold from [skaffold.dev](https://skaffold.dev/docs/install/#standalone-binary)
+- Install [Ingress NGINX Controller](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
+
+Follow these steps below:
+
+1. Run `docker build .` in each service
+2. `skaffold dev`
 
 # Documentation
 

@@ -1,7 +1,12 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { CustomError } from '../errors/custom-error';
 
-function errorsHandler(error: Error, _: Request, res: Response) {
+function errorsHandler(
+  error: Error,
+  _: Request,
+  res: Response,
+  next: NextFunction
+) {
   if (error instanceof CustomError) {
     return res
       .status(error.statusCode)

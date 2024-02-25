@@ -12,7 +12,7 @@ import { requestValidator } from '../middleware/request-validator.middleware';
 
 const userRouter = express.Router();
 
-userRouter.post('/current-user', currentUser, requireAuth, httpGetCurrentUser);
+userRouter.get('/current-user', currentUser, requireAuth, httpGetCurrentUser);
 userRouter.post(
   '/signin',
   [
