@@ -16,11 +16,12 @@ Microservices architecture using Express.js
 - Make sure Docker and Kubernetes are running on your system.
 - Install Skaffold from [skaffold.dev](https://skaffold.dev/docs/install/#standalone-binary)
 - Install [Ingress NGINX Controller](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
-
+ 
 Follow these steps below:
 
-1. Run `docker build .` in each service
-2. `skaffold dev`
+1. Setup JWT_KEY by running this command: `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=somesecretvaluehere`
+2. Run `docker build .` in each service
+3. `skaffold dev`
 
 # Documentation
 
