@@ -1,7 +1,7 @@
 # Audiophile
 
 # Front-End
-Next.js, React, Styled Components
+Next.js, SCSS for custom styling
 
 # Back-End
 Microservices architecture using Express.js
@@ -11,9 +11,9 @@ Microservices architecture using Express.js
 2. `npm install`
 3. `npm run dev`
 
-## Start backend microservices:
+## Start microservices:
 ### Requirements:
-- Make sure Docker and Kubernetes are running on your system.
+- Make sure Docker and Kubernetes are installed and running on your system.
 - Install Skaffold from [skaffold.dev](https://skaffold.dev/docs/install/#standalone-binary)
 - Install [Ingress NGINX Controller](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
  
