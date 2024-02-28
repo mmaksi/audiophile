@@ -7,6 +7,7 @@ const INGRESS_BASE_URL =
 export default () => {
   const session = cookies().get('session');
 
+  // If the request was made from a server component from inside the container
   if (typeof window == 'undefined') {
     return axios.create({
       baseURL: INGRESS_BASE_URL,
@@ -15,6 +16,7 @@ export default () => {
         Cookie: `session=${session?.value}`,
       },
     });
+    // If the request was made from a browser
   } else {
     return axios.create({
       baseURL: '/',
