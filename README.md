@@ -48,3 +48,8 @@ JWT token inside the cookie is not encrypted using the `cookie-session` package 
 
 - POST `api/users/signout`
 
+Cross Namespace Communication:
+Connect to: `http://NAMEOFSERVICE.NAMESPACE.svc.cluster.local`
+
+E.g: connecting from Next.js to Ingress=NGINX, we write:
+`http://ingress-nginx-controller.ingress-nginx.svc.cluster.local`
