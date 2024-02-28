@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { cookies } from 'next/headers';
-
-const INGRESS_BASE_URL =
-  'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local';
+import { cookies, headers } from 'next/headers';
+import buildClient from '../../api/buildClient';
 
 interface currentUser {
   id: string;
@@ -13,15 +11,11 @@ interface currentUser {
 export default async function Home() {
   const session = cookies().get('session');
 
-  const { data } = await axios.get<currentUser>(
-    `${INGRESS_BASE_URL}/api/users/current-user`,
-    {
-      headers: {
-        Host: 'audiophile.com',
-        Cookie: `session=${session?.value}`,
-      },
-    }
+  const { data } = await buildClient().get<currentUser>(
+    `/api/users/current-user`
   );
+
+  console.log(data);
 
   return (
     <div>
