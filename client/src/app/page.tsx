@@ -9,8 +9,6 @@ interface currentUser {
 }
 
 export default async function Home() {
-  const session = cookies().get('session');
-
   const { data } = await buildClient().get<currentUser>(
     `/api/users/current-user`
   );
