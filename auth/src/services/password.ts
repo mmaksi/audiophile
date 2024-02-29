@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { BadRequestError } from '../errors/bad-request.error';
+import { BadRequestError } from '@maksimark/audiophile-common';
 
 export class Password {
   static async toHash(password: string) {

@@ -1,7 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import errorsHandler from './middleware/errors-handler.middleware';
-import { ErrorNotFound } from './errors/not-found.error';
+import { ErrorNotFound, errorsHandler } from '@maksimark/audiophile-common';
 import cookieSession from 'cookie-session';
 import userRouter from './routers/user.router';
 

@@ -5,10 +5,10 @@ import {
   httpSignout,
   httpSignup,
 } from '../controllers/user.controller';
-import { currentUser } from '../middleware/current-user.middleware';
-import { requireAuth } from '../middleware/require-auth.middleware';
+import { currentUser } from '@maksimark/audiophile-common';
+import { requireAuth } from '@maksimark/audiophile-common';
 import { body } from 'express-validator';
-import { requestValidator } from '../middleware/request-validator.middleware';
+import { requestValidator } from '@maksimark/audiophile-common';
 
 const userRouter = express.Router();
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { findUser, saveUser } from '../models/users/user.model';
-import { BadRequestError } from '../errors/bad-request.error';
+import { BadRequestError } from '@maksimark/audiophile-common';
 import { Password } from '../services/password';
 import jwt from 'jsonwebtoken';
 
