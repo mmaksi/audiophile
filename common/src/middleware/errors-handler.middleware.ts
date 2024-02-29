@@ -12,6 +12,7 @@ export function errorsHandler(
       .status(error.statusCode)
       .json({ errors: error.serializeErrors() });
   }
+  console.log(error);
   return res
     .status(400)
     .json({ errors: [{ message: 'Something went wrong' }] });
