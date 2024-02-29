@@ -1,6 +1,6 @@
 {
   "name": "@maksimark/common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a shared library for the audiophile project to allow reusing certain logic among services like user authentication middleware and request authentication middleware",
   "main": "build/index.js",
   "types": "build/index.d.ts",
