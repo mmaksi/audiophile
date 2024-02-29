@@ -1,6 +1,6 @@
 {
   "name": "@maksimark/audiophile-common",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a shared library for the audiophile project to allow reusing certain logic among services like user authentication middleware and request authentication middleware",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -15,6 +15,7 @@
   "author": "Mark Maksi",
   "license": "ISC",
   "devDependencies": {
+    "@types/cookie-session": "^2.0.48",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "del-cli": "^5.1.0",
