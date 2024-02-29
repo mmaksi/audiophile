@@ -13,7 +13,5 @@ export function errorsHandler(
       .json({ errors: error.serializeErrors() });
   }
   console.log(error);
-  return res
-    .status(400)
-    .json({ errors: [{ message: 'Something went wrong' }] });
+  return res.status(400).json(error);
 }
