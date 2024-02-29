@@ -23,3 +23,11 @@ build:
         manual:
           - src: '**/*.ts'
             dest: .
+    - image: markmaksi/products
+      context: products
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
+            dest: .
