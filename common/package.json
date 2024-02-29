@@ -1,6 +1,6 @@
 {
   "name": "@maksimark/audiophile-common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a shared library for the audiophile project to allow reusing certain logic among services like user authentication middleware and request authentication middleware",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -8,9 +8,22 @@
     "build/**/*"
   ],
   "scripts": {
-    "build": "npm run build && tsc",
-    "clean": "del ./build/*"
+    "build": "npm run clean && tsc",
+    "clean": "del-cli ./build/*",
+    "pub": "git add . && git commit -m \"updated the common package to be published to npm\" && npm version patch && npm run build && npm publish"
   },
   "author": "Mark Maksi",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "del-cli": "^5.1.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cookie-session": "^2.1.0",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
