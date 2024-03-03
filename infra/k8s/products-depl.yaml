@@ -16,6 +16,8 @@ spec:
         - name: products
           image: markmaksi/products
           env:
+            - name: MONGO_URI
+              value: 'mongodb://products-mongo-srv:27017/products'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

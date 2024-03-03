@@ -1,7 +1,7 @@
 # Audiophile
 
-# Front-End
-Next.js, SCSS for custom styling
+# Front-End Technologies
+Next.js, TailwindCSS
 
 # Back-End
 Microservices architecture using Express.js

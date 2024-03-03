@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 import { app } from './app';
 
 const startServer = async () => {
-  if (!process.env.JWT_KEY) {
-    throw new Error('JWT key must be defined');
+  if (!process.env.MONGO_URI) {
+    throw new Error('Mongo URI must be defined');
   }
 
   try {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDB!');
   } catch (error) {
     console.error(error);

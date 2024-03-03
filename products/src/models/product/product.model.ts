@@ -2,13 +2,11 @@ import Product from './product.mongo';
 import { ProductAttrs } from './product.types';
 
 export async function getAllProducts() {
-  return await Product.find();
+  return await Product.find({});
 }
 
-export async function getProduct(productId: number) {
-  return await Product.findOne({
-    id: productId,
-  });
+export async function getProduct(productId: string) {
+  return await Product.findById(productId);
 }
 
 export async function createProduct(productToCreate: ProductAttrs) {
@@ -17,8 +15,8 @@ export async function createProduct(productToCreate: ProductAttrs) {
   return product;
 }
 
-// export async function saveUser(email: string, password: string) {
-//   const user = Product.build({ email, password });
-//   await user.save();
-//   return user;
-// }
+export async function getAllCategoryProducts(category: string) {
+  return await Product.find({
+    category,
+  });
+}

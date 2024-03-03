@@ -13,13 +13,13 @@ import { requestValidator } from '@maksimark/audiophile-common';
 const productsRouter = express.Router();
 
 productsRouter.get('/', currentUser, requireAuth, httpGetAllProducts);
+productsRouter.get('/:productId', currentUser, requireAuth, httpGetProduct);
 productsRouter.get(
-  '/:category',
+  '/categories/:category',
   currentUser,
   requireAuth,
   httpGetCategoryProducts
 );
-productsRouter.get('/:productId', currentUser, requireAuth, httpGetProduct);
 
 // TODO temporary route to be deleted
 productsRouter.post(
