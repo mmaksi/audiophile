@@ -1,5 +1,3 @@
-import axios from 'axios';
-import { cookies, headers } from 'next/headers';
 import buildClient from '../../api/buildClient';
 
 interface currentUser {
