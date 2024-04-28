@@ -12,7 +12,7 @@ import { requestValidator } from '@maksimark/audiophile-common';
 
 const userRouter = express.Router();
 
-userRouter.get('/current-user', currentUser, requireAuth, httpGetCurrentUser);
+userRouter.get('/current-user', currentUser, httpGetCurrentUser);
 userRouter.post(
   '/signin',
   [

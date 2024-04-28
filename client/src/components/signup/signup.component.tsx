@@ -1,7 +1,12 @@
 'use client';
-import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import useRequest from '@/hooks/useRequest';
+
+interface SignupData {
+  email: string;
+  password: string;
+}
 
 const initialValues = {
   email: '',
@@ -9,19 +14,17 @@ const initialValues = {
 };
 
 export default function Signup() {
-  const [formData, setFormData] = useState(initialValues);
+  const [formData, setFormData] = useState<SignupData>(initialValues);
   const router = useRouter();
+  const { doRequest, errors } = useRequest({
+    url: '/api/users/signup',
+    body: formData,
+    method: 'post',
+  });
 
   const submitForm = async (event: any) => {
     event.preventDefault();
-    // TODO Convert the code below to a custom hook: Task ID = AUD-10
-    try {
-      const resposnse = await axios.post('/api/users/signup', formData);
-      console.log(resposnse.data);
-      router.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+    doRequest();
   };
 
   const changeHandler = (event: any) => {
@@ -53,6 +56,7 @@ export default function Signup() {
       <button onClick={submitForm} type="submit">
         Submit
       </button>
+      {errors}
     </div>
   );
 }
